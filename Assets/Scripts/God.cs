@@ -8,12 +8,12 @@ public class God : MonoBehaviour
     public GameObject[,] world;
     public GameObject cell;
     public Life[,] cellLife;
-    public int sizeX;
-    public int sizeY;
+    int sizeX;
+    int sizeY;
     public int seed;
     public Camera mainCamera;
     public bool randomized = true;
-    public float popDensity = 0.5f;
+    public float popDensity;
     int width;
 
     public Text population;
@@ -26,6 +26,9 @@ public class God : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sizeX = PlayerPrefs.GetInt("X");
+        sizeY = PlayerPrefs.GetInt("Y");
+        popDensity = PlayerPrefs.GetFloat("Dense");
         width = Screen.width;
         seed = (int)System.DateTime.Now.Ticks;
         world = new GameObject[sizeX + 2, sizeY + 2];
